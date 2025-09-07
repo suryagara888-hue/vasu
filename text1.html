@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Online Food Ordering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-60 text-gray-800">
+    <!-- Header -->
+    <header class="bg-orange-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">FoodieHub</h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-orange-200 transition">Home</a>
+                <a href="#menu" class="hover:text-orange-200 transition">Menu</a>
+                <a href="#cart" class="hover:text-orange-200 transition">Cart <span id="cart-count" class="bg-red-500 text-xs px-2 py-1 rounded-full">0</span></a>
+                <a href="#contact" class="hover:text-orange-200 transition">Contact</a>
+            </nav>
+            <button class="md:hidden" onclick="toggleMenu()">[MENU]</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-orange-600 px-4 pb-4">
+            <a href="#home" class="block py-2">Home</a>
+            <a href="#menu" class="block py-2">Menu</a>
+            <a href="#cart" class="block py-2">Cart</a>
+            <a href="#contact" class="block py-2">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-orange-300 to-red-300 text-white py-10">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Delicious Food Delivered Fast</h2>
+            <p class="text-lg mb-8">Order your favorite dishes from the comfort of your home</p>
+            <div class="flex justify-center">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bab94903-e739-4968-afc2-5b605c1222c7.png" alt="Vibrant display of a fresh hot pizza with golden crust topped with cheese, pepperoni, and vegetables next to a juicy burger with lettuce, tomato, and pickles on a sesame bun, set against a modern industrial kitchen background with stainless steel counters and steaming pots, emphasizing freshness and appeal with warm lighting and enticing aromas suggested through detailed ingredient textures" class="rounded-lg shadow-lg max-w-full h-auto" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-18 bg-white">
+        <div class="container mx-auto px-5">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Menu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/430e7b77-4b72-4973-8e2d-e026788ad668.png" alt="Close-up view of a classic margherita pizza with thin crispy crust topped with fresh tomatoes, melted mozzarella cheese, basil leaves, and a drizzle of olive oil, served in a rustic wooden box with steam rising suggesting warmth and handmade quality in an Italian-style kitchen setting" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Margherita Pizza</h3>
+                        <p class="text-gray-600 mb-4">Fresh mozzarella, tomato sauce, basil</p>
+                        <p class="text-orange-500 font-bold mb-4">$12.99</p>
+                        <button onclick="addToCart('Margherita Pizza', 12.99)" class="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d36013fc-5407-4dd4-9a37-94ba4f7e1885.png" alt="Appetizing shot of a juicy beef burger with grilled patty, melted cheese, crisp lettuceુ, ripe tomato, onions on a toasted bun served alongside golden crispy fries on a square white plate in a casual diner environment with soft natural lighting" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Classic Burger</h3>
+                        <p class="text-gray-600 mb-4">Beef patty, cheese, lettuce, tomato</p>
+                        <p class="text-orange-500 font-bold mb-4">$9.99</p>
+                        <button onclick="addToCart('Classic Burger', 9.99)" class="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8a4acdc6-a109-4871-a100-f116e2b5a5dc.png" alt="Refreshing mixed green salad featuring crisp romaine lettuce, cherry tomatoes, cucumber slices, avocado chunks, feta cheese crumbles, and a light vinaigrette dressing in a clear glass bowl with a rustic wooden table background and fresh herb garnishes suggesting a healthy and vibrant meal" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Caesar Salad</h3>
+                        <p class="text-gray-600 mb-4">Romaine, croutons, parmesan, caesar dressing</p>
+                        <p class="text-orange-500 font-bold mb-4">$7.99</p>
+                        <button onclick="addToCart('Caesar Salad', 7.99)" class="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
+        <div class="bg-white p-8 rounded-lg w-11/12 md:w-1/2 max-h-96 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+            <ul id="cart-items" class="mb-4"></ul>
+            <p class="text-xl font-bold mb-4">Total: $<span id="total">0.00</span></p>
+            <form class="mb-4" onsubmit="submitOrder(event)">
+                <input type="text" placeholder="Your Name" required class="border p-2 w-full mb-2">
+                <input type="text" placeholder="Address" required class="border p-2 w-full mb-2">
+                <input type="tel" placeholder="Phone" required class="border p-2 w-full mb-4">
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-full w-full hover:bg-green-600 transition">Place Order</button>
+            </form>
+            <button onclick="closeCart()" class="mt-4 text-gray-500 underline">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2023 FoodieHub. All rights reserved.</p>
+            <p>Fast. Fresh. Delicious.</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            total += price;
+            updateCartCount();
+            updateCartDisplay();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.item} - $${item.price}`;
+                li.className = 'mb-2';
+                cartItems.appendChild(li);
+            });
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+
+        function closeCart() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        document.getElementById('cart-count').addEventListener('click', () => {
+            document.getElementById('cart-modal').classList.remove('hidden');
+            updateCartDisplay();
+        });
+
+        function submitOrder(event) {
+            event.preventDefault();
+            alert('Order placed! Thank you for choosing FoodieHub.');
+            cart = [];
+            total = 0;
+            updateCartCount();
+            closeCart();
+        }
+    </script>
+</body>
+</html>
+</content>
+</create_file>
